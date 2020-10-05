@@ -3,6 +3,9 @@ const searchInput = document.getElementById("search");
 const form = document.querySelector(".search");
 const searchBtn = document.querySelector(".search__button");
 const errorMsg = document.querySelector(".error-message");
+const preloader = document.querySelector(".preloader");
+
+//Details Data
 const ipAddress = document.getElementById("ip-address");
 const timeZone = document.getElementById("time-zone");
 const region = document.getElementById("location");
@@ -34,8 +37,10 @@ const getRequest = async (ip_address) => {
   const data = await response.json();
   console.log(data);
 
-  if (ip_address == data.ip) {
+  if (ip_address !== data.ip) {
     errorMsg.textContent = `Invalid IP Address!`;
+  } else {
+    errorMsg.textContent = "";
   }
 
   //Latitude and Longitude
@@ -71,3 +76,7 @@ const renderMap = (lat, lng) => {
 };
 
 defaultRequest();
+
+window.addEventListener("load", () => {
+  preloader.classList.add("hide-preloader");
+});
