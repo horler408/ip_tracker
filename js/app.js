@@ -69,10 +69,7 @@ const renderMap = (lat, lng) => {
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
 
-  L.marker([lat, lng])
-    .addTo(map)
-    .bindPopup("A pretty CSS3 popup.<br> Easily customizable.")
-    .openPopup();
+  L.marker([lat, lng]).addTo(map).bindPopup("IP Address Location").openPopup();
 };
 
 defaultRequest();
